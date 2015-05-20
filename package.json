@@ -1,13 +1,42 @@
 {
   "name": "jquery-spellchecker",
-  "version": "0.2.4-ignored",
+  "version": "0.2.4",
+  "description": "A jquery spellchecker plugin",
+  "author": "CV-Library Ltd.",
+  "contributors": [
+    { "name": "Richard Willis", "email": "willis.rh@gmail.com" },
+    { "name": "Tim Retout", "email": "t.retout@cv-library.co.uk" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cv-library/jquery-spellchecker"
+  },
+  "bugs": {
+    "url": "https://github.com/cv-library/jquery-spellchecker/issues"
+  },
+  "keywords": [
+    "spelling",
+    "spellcheck",
+    "jquery-plugin"
+  ],
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt qunit"
+    "test": "grunt jasmine"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
   },
   "devDependencies": {
-    "grunt": "~0.3.16"
-  }
+    "grunt": "~0.4.5",
+    "grunt-contrib-compress": "~0.13.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-cssmin": "~0.12.3",
+    "grunt-contrib-jasmine": "~0.8.2",
+    "grunt-contrib-jshint": "~0.11.2",
+    "grunt-contrib-uglify": "~0.9.1"
+  },
+  "license": "MIT"
 }
