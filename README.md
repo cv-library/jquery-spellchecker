@@ -1,7 +1,5 @@
 # jQuery Spellchecker
 
-## THIS PROJECT IS OLD AND IS NOT MAINTAINED
-
 The jQuery Spellchecker is a free Javascript spellchecker in the form of a lightweight jQuery plugin that can be used to check the spelling of text within a form field or within a DOM tree.
 This is a complete rewrite of the [initial spellchecker](http://code.google.com/p/jquery-spellchecker/) plugin I wrote.
 
@@ -53,11 +51,13 @@ Testing is much appreciated. Please post any issue you find in the [issue tracke
 
 ## Contributing
 
-* View the [contribute documentation](https://github.com/badsyntax/jquery-spellchecker/blob/master/CONTRIBUTING.md) to learn how to contribute to the project.
+* View the [contribute documentation](CONTRIBUTING.md) to learn how to contribute to the project.
 
 ## Thanks
 
 This project would not be possible without the [findAndReplaceDOMText](https://github.com/padolsey/findAndReplaceDOMText) function written by [James Padolsey](https://github.com/padolsey).
+
+Thanks to Richard Willis who [originally wrote](https://github.com/badsyntax/jquery-spellchecker) and maintained this plugin.
 
 ## License
 
