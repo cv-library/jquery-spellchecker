@@ -5,6 +5,13 @@
  * Copyright (c) 2012 Richard Willis; Licensed MIT
  */
 
+(function (factory) {
+  if(typeof module === "object" && typeof module.exports === "object") {
+    factory(require("jquery"), window, document);
+  } else {
+    factory(jQuery, window, document);
+  }
+}(function($, window, document, undefined) {
 CKEDITOR.plugins.add('jqueryspellchecker', {
 
   config: {
@@ -128,3 +135,4 @@ CKEDITOR.plugins.add('jqueryspellchecker', {
     };
   }
 });
+}));
