@@ -1,6 +1,7 @@
 /*
- * jQuery Spellchecker - TinyMCE Plugin - v0.2.4
- * https://github.com/badsyntax/jquery-spellchecker
+ * jQuery Spellchecker - TinyMCE Plugin - v0.3.0
+ * https://github.com/cv-library/jquery-spellchecker
+ * Copyright (c) 2015 CV-Library
  * Copyright (c) 2012 Richard Willis; Licensed MIT
  */
 
