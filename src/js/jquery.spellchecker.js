@@ -5,7 +5,13 @@
  * Copyright (c) 2012 Richard Willis; Licensed MIT
  */
 
-(function(window, $) {
+(function (factory) {
+  if(typeof module === "object" && typeof module.exports === "object") {
+    factory(require("jquery"), window, document);
+  } else {
+    factory(jQuery, window, document);
+  }
+}(function($, window, document, undefined) {
 
   /* Config
    *************************/
@@ -792,4 +798,4 @@
 
   $.SpellChecker = SpellChecker;
 
-}(this, jQuery));
+}));
