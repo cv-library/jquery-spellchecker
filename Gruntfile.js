@@ -57,7 +57,12 @@ module.exports = function(grunt) {
           'src/js/libs/jquery/jquery-1.8.2.min.js',
           'src/js/jquery.spellchecker.js'
         ],
-        specs : 'tests/javascript/spec/**/*.js'
+        options: {
+          vendor: [
+            'node_modules/jquery/dist/jquery.min.js'
+          ],
+          specs : 'tests/javascript/spec/**/*.js'
+        }
       }
     },
     jshint: {
