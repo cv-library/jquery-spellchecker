@@ -59,7 +59,8 @@ module.exports = function(grunt) {
         ],
         options: {
           vendor: [
-            'node_modules/jquery/dist/jquery.min.js'
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/findandreplacedomtext/src/findAndReplaceDOMText.js'
           ],
           specs : 'tests/javascript/spec/**/*.js'
         }

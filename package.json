@@ -26,7 +26,8 @@
     "test": "grunt jasmine"
   },
   "dependencies": {
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "findandreplacedomtext": "~0.4.4"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

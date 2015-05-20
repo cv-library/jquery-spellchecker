@@ -3,3 +3,4 @@ composer.lock
 archive
 node_modules
 dist
+.grunt
