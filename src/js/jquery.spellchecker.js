@@ -7,11 +7,11 @@
 
 (function (factory) {
   if(typeof module === "object" && typeof module.exports === "object") {
-    factory(require("jquery"), window, document);
+    factory(require("jquery"), require("findandreplacedomtext"), window, document);
   } else {
-    factory(jQuery, window, document);
+    factory(jQuery, window.findAndReplaceDOMText, window, document);
   }
-}(function($, window, document, undefined) {
+}(function($, findAndReplaceDOMText, window, document, undefined) {
 
   /* Config
    *************************/
@@ -245,7 +245,7 @@
   IncorrectWordsInline.prototype.destroy = function() {
     this.element.off('.' + pluginName);
     try {
-      window.findAndReplaceDOMText.revert();
+      findAndReplaceDOMText.revert();
     } catch(e) {}
   };
 
@@ -532,13 +532,13 @@
   };
 
   HtmlParser.prototype.replaceText = function(regExp, element, replaceText, captureGroup) {
-    window.findAndReplaceDOMText(regExp, element, replaceText, captureGroup);
+    findAndReplaceDOMText(regExp, element, replaceText, captureGroup);
   };
 
   HtmlParser.prototype.replaceWord = function(oldWord, replacement, element) {
 
     try {
-      window.findAndReplaceDOMText.revert();
+      findAndReplaceDOMText.revert();
     } catch(e) {}
 
     var regExp = new RegExp('(^|[^' + letterChars + '])(' + RegExp.escape(oldWord) + ')(?=[^' + letterChars + ']|$)', 'g');
