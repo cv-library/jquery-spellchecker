@@ -6,7 +6,7 @@ within a form field or within a DOM tree.
 
 Note: This is a friendly fork of jquery-spellchecker, because the original was
 marked unmaintained.  The PHP webservice has been removed from the source tree,
-with a view to making the JS code more reusable (see 'Requirements' below.
+with a view to making the JS code more reusable (see 'Requirements' below).
 
 ## Features
 
