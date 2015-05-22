@@ -1,9 +1,12 @@
 # jQuery Spellchecker
 
-The jQuery Spellchecker is a free Javascript spellchecker in the form of a lightweight jQuery plugin that can be used to check the spelling of text within a form field or within a DOM tree.
-This is a complete rewrite of the [initial spellchecker](http://code.google.com/p/jquery-spellchecker/) plugin I wrote.
+The jQuery Spellchecker is a free Javascript spellchecker in the form of a
+lightweight jQuery plugin that can be used to check the spelling of text
+within a form field or within a DOM tree.
 
-The current version of the plugin is v0.3.0.
+Note: This is a friendly fork of jquery-spellchecker, because the original was
+marked unmaintained.  The PHP webservice has been removed from the source tree,
+with a view to making the JS code more reusable (see 'Requirements' below.
 
 ## Features
 
@@ -11,12 +14,9 @@ The current version of the plugin is v0.3.0.
 * HTML parsing (for using the spellchecker within WSYIWYG editors)
 * Text parsing (for using the spellchecker on form fields)
 * Multiple fields
-* Multiple PHP back-end drivers (Enchant, PSpell, Google)
 * Friendly API
 * Event based
 * MIT licensed
-* Actively developed
-
 
 ## Browser support
 
@@ -27,11 +27,11 @@ The plugin has been tested and works with the following browsers:
 ## Requirements
 
 * jQuery
-* PHP5.3+ to use the default webservice
+* findAndReplaceDOMText
+* A webservice that implements the API required by this code - see
+  e.g. [CV-Library's implementation in Golang](https://github.com/cv-library/spellchecker) or [node-aspell-spellchecker](https://github.com/smithatlanta/node-aspell-spellchecker)
 
-## Download
-
-* [View Downloads](http://jquery-spellchecker.badsyntax.co/downloads.html)
+Volunteers to find a good place to host the PHP implementation are welcome.
 
 ## Documentation
 
@@ -47,7 +47,7 @@ You can find simple usage examples in the downloadable package.
 
 ## Issues
 
-Testing is much appreciated. Please post any issue you find in the [issue tracker](https://github.com/badsyntax/jquery-spellchecker/issues).
+Testing is much appreciated. Please post any issue you find in the [issue tracker](https://github.com/cv-library/jquery-spellchecker/issues).
 
 ## Contributing
 
