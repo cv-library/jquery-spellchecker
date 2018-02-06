@@ -593,7 +593,7 @@
     });
 
     var regExp = '';
-    regExp += '([^' + letterChars + '])';
+    regExp += '(^|[^' + letterChars + '])';
     regExp += '(' + incorrectWords.join('|') + ')';
     regExp += '(?=[^' + letterChars + '])';
 
