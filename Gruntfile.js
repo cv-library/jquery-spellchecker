@@ -55,7 +55,7 @@ module.exports = function(grunt) {
       dist: {
         src : [
           'src/js/libs/jquery/jquery-1.8.2.min.js',
-          'src/js/jquery.spellchecker.js'
+          'src/js/jquery-spellchecker.js'
         ],
         options: {
           vendor: [
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'src/js/jquery.spellchecker.js', 'tests/javascript/**/*.js'],
+      all: ['Gruntfile.js', 'src/js/jquery-spellchecker.js', 'tests/javascript/**/*.js'],
       options: {
         curly: false,
         eqeqeq: true,
