@@ -4,8 +4,14 @@
   "description": "A jquery spellchecker plugin",
   "author": "CV-Library Ltd.",
   "contributors": [
-    { "name": "Richard Willis", "email": "willis.rh@gmail.com" },
-    { "name": "Tim Retout", "email": "t.retout@cv-library.co.uk" }
+    {
+      "name": "Richard Willis",
+      "email": "willis.rh@gmail.com"
+    },
+    {
+      "name": "Tim Retout",
+      "email": "t.retout@cv-library.co.uk"
+    }
   ],
   "repository": {
     "type": "git",
@@ -35,7 +41,7 @@
     "grunt-contrib-concat": "~0.5.1",
     "grunt-contrib-copy": "~0.8.0",
     "grunt-contrib-cssmin": "~0.12.3",
-    "grunt-contrib-jasmine": "~0.8.2",
+    "grunt-contrib-jasmine": "~1.1.0",
     "grunt-contrib-jshint": "~0.11.2",
     "grunt-contrib-uglify": "~0.9.1"
   },
