@@ -188,6 +188,43 @@ describe("SpellChecker", function() {
     });
   });
 
+  describe('HTML parser', function() {
+    var spellchecker, a, parser;
+
+    beforeEach(function () {
+      a = $('<a id="test1" />').appendTo('body');
+      spellchecker = newSpellChecker('html', a);
+      parser = spellchecker.parser;
+    });
+
+    afterEach(function() {
+      spellchecker.destroy();
+      a.remove();
+    });
+
+    it('Highlights incorrect words', function() {
+      var html = $('<p>How arrrre you today?</p>');
+      var highlighted = parser.highlightWords(['arrrre'],html);
+
+      expect(html.html()).toBe('How <span class="spellchecker-word-highlight">arrrre</span> you today?');
+    });
+
+    it('Highlights words at start of line', function() {
+      var html = $('<p>Hoooow are you today?</p>');
+      var highlighted = parser.highlightWords(['Hoooow'],html);
+
+      expect(html.html()).toBe('<span class="spellchecker-word-highlight">Hoooow</span> are you today?');
+    });
+
+    it('Highlights words at end of line', function() {
+      var html = $('<p>How are you todaaaay</p>');
+      var highlighted = parser.highlightWords(['todaaaay'],html);
+
+      expect(html.html()).toBe('How are you <span class="spellchecker-word-highlight">todaaaay</span>');
+    });
+
+  });
+
   describe('Text parser', function() {
 
     var spellchecker, a, parser;

@@ -595,7 +595,7 @@
     var regExp = '';
     regExp += '(^|[^' + letterChars + '])';
     regExp += '(' + incorrectWords.join('|') + ')';
-    regExp += '(?=[^' + letterChars + '])';
+    regExp += '(?=[^' + letterChars + ']|$)';
 
     this.replaceText(new RegExp(regExp, 'g'), element[0], this.highlightWordsHandler(incorrectWords), 2);
   };
