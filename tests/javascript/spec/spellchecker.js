@@ -209,6 +209,13 @@ describe("SpellChecker", function() {
       expect(html.html()).toBe('How <span class="spellchecker-word-highlight">arrrre</span> you today?');
     });
 
+    it('Highlights only whole words', function() {
+      var html = $('<p>How is your day today?</p>');
+      var highlighted = parser.highlightWords(['day'],html);
+
+      expect(html.html()).toBe('How is your <span class="spellchecker-word-highlight">day</span> today?');
+    });
+
     it('Highlights words at start of line', function() {
       var html = $('<p>Hoooow are you today?</p>');
       var highlighted = parser.highlightWords(['Hoooow'],html);

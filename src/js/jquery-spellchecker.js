@@ -592,9 +592,10 @@
       return RegExp.escape(word);
     });
 
-    var regExp = '(' + incorrectWords.join('|') + ')';
+    var regExp = '\\b(' + incorrectWords.join('|') + ')\\b';
 
     findAndReplaceDOMText(element[0], {
+      preset: 'prose',
       find: new RegExp(regExp, 'g'),
       wrap: 'span',
       wrapClass: pluginName + '-word-highlight',
