@@ -592,41 +592,13 @@
       return RegExp.escape(word);
     });
 
-    var regExp = '';
-    regExp += '(^|[^' + letterChars + '])';
-    regExp += '(' + incorrectWords.join('|') + ')';
-    regExp += '(?=[^' + letterChars + ']|$)';
+    var regExp = '(' + incorrectWords.join('|') + ')';
 
-    this.replaceText(new RegExp(regExp, 'g'), element[0], this.highlightWordsHandler(incorrectWords), 2);
-  };
-
-  HtmlParser.prototype.highlightWordsHandler = function(incorrectWords) {
-
-    var c;
-    var replaceElement;
-
-    return function(fill, i, word) {
-
-      // Replacement node
-      var span = $('<span />', {
-        'class': pluginName + '-word-highlight'
-      });
-
-      // If we have a new match
-      if (i !== c) {
-        c = i;
-        replaceElement = span;
-      }
-      
-      span
-      .text(fill)
-      .data({
-        'firstElement': replaceElement,
-        'word': word
-      });
-
-      return span[0];
-    };
+    findAndReplaceDOMText(element[0], {
+      find: new RegExp(regExp, 'g'),
+      wrap: 'span',
+      wrapClass: pluginName + '-word-highlight',
+    });
   };
 
   HtmlParser.prototype.ignoreWord = function(oldWord, replacement) {

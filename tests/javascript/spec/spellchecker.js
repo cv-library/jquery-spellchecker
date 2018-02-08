@@ -236,6 +236,13 @@ describe("SpellChecker", function() {
 
       expect(html.html()).toBe('<span class="spellchecker-word-highlight">' + "I'mm</span> great thanks");
     });
+
+    it('Highlights words at boundaries of list items', function() {
+      var html = $("<div><ol><li><p>one</p></li><li><p>two three</p></li></ol></div>");
+      var highlighted = parser.highlightWords(['one','two'],html);
+
+      expect(html.html()).toBe('<ol><li><p><span class="spellchecker-word-highlight">one</span></p></li><li><p><span class="spellchecker-word-highlight">two</span> three</p></li></ol>');
+    });
   });
 
   describe('Text parser', function() {

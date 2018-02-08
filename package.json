@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "jquery": "^2.1.4",
-    "findandreplacedomtext": "~0.4.4"
+    "findandreplacedomtext": "~0.4.6"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
