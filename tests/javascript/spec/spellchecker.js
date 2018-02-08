@@ -223,6 +223,19 @@ describe("SpellChecker", function() {
       expect(html.html()).toBe('How are you <span class="spellchecker-word-highlight">todaaaay</span>');
     });
 
+    it('Highlights words with punctuation after them', function() {
+      var html = $('<p>How are you todaaaay?</p>');
+      var highlighted = parser.highlightWords(['todaaaay'],html);
+
+      expect(html.html()).toBe('How are you <span class="spellchecker-word-highlight">todaaaay</span>?');
+    });
+
+    it('Highlights words with punctuation in them', function() {
+      var html = $("<p>I'mm great thanks</p>");
+      var highlighted = parser.highlightWords(["I'mm"],html);
+
+      expect(html.html()).toBe('<span class="spellchecker-word-highlight">' + "I'mm</span> great thanks");
+    });
   });
 
   describe('Text parser', function() {
