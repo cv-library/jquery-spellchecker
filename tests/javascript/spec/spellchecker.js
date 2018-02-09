@@ -257,6 +257,22 @@ describe("SpellChecker", function() {
 
       expect(html.html()).toBe('<ol><li><p><span class="spellchecker-word-highlight">one</span></p></li><li><p><span class="spellchecker-word-highlight">two</span> three</p></li></ol>');
     });
+
+    it('Replacing words removes highlighting', function() {
+      var element = $('<p>How arrrre you today?</p>');
+      parser.highlightWords(['arrrre'], element);
+      parser.replaceWord('arrrre', 'are', element);
+
+      expect(element.html()).toBe('How are you today?');
+    });
+
+    it('Replacing words leaves other highlighting alone', function() {
+      var element = $('<p>How arrrre you todaaay?</p>');
+      parser.highlightWords(['arrrre', 'todaaay'], element);
+      parser.replaceWord('arrrre', 'are', element);
+
+      expect(element.html()).toBe('How are you <span class="spellchecker-word-highlight">todaaay</span>?');
+    });
   });
 
   describe('Text parser', function() {

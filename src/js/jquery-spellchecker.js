@@ -538,12 +538,16 @@
   HtmlParser.prototype.replaceWord = function(oldWord, replacement, element) {
 
     try {
-      findAndReplaceDOMText.revert();
+      this.finder.revert();
     } catch(e) {}
 
-    var regExp = new RegExp('(^|[^' + letterChars + '])(' + RegExp.escape(oldWord) + ')(?=[^' + letterChars + ']|$)', 'g');
+    var regExp = '\\b' + RegExp.escape(oldWord) + '\\b';
 
-    this.replaceText(regExp, element[0], this.replaceTextHandler(oldWord, replacement), 2);
+    this.finder = findAndReplaceDOMText(element[0], {
+      preset: 'prose',
+      find: new RegExp(regExp, 'g'),
+      replace: replacement,
+    });
 
     // Remove this word from the list of incorrect words
     this.incorrectWords = $.map(this.incorrectWords || [], function(word) {
@@ -594,7 +598,7 @@
 
     var regExp = '\\b(' + incorrectWords.join('|') + ')\\b';
 
-    findAndReplaceDOMText(element[0], {
+    this.finder = findAndReplaceDOMText(element[0], {
       preset: 'prose',
       find: new RegExp(regExp, 'g'),
       wrap: 'span',
