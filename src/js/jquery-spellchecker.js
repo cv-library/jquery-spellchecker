@@ -557,35 +557,6 @@
     this.highlightWords(this.incorrectWords, element);
   };
 
-  HtmlParser.prototype.replaceTextHandler = function(oldWord, replacement){
-
-    var r = replacement;
-    var replaced;
-    var replaceFill;
-    var c;
-
-    return function(fill, i) {
-
-      // Reset the replacement for each match
-      if (i !== c) {
-        c = i;
-        replacement = r;
-        replaced = '';
-      }
-
-      replaceFill = replacement.substring(0, fill.length);
-      replacement = replacement.substr(fill.length);
-      replaced += fill;
-
-      // Add remaining text to last node
-      if (replaced === oldWord) {
-        replaceFill += replacement;
-      }
-
-      return document.createTextNode(replaceFill);
-    };
-  };
-
   HtmlParser.prototype.highlightWords = function(incorrectWords, element) {
     if (!incorrectWords.length) {
       return;
