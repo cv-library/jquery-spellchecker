@@ -104,13 +104,13 @@
     }
   };
 
-  /* Handlers 
+  /* Handlers
    *************************/
 
   var selectWordHandler = function(handlerName) {
 
     return function(e) {
-    
+
       e.preventDefault();
       e.stopPropagation();
 
@@ -120,9 +120,9 @@
       this.trigger(handlerName, e, word, element, this);
 
     }.bind(this);
-  };  
-  
-  /* Collections 
+  };
+
+  /* Collections
    *************************/
 
   var Collection = function(elements, instanceFactory) {
@@ -178,7 +178,7 @@
   };
 
   IncorrectWordsBox.prototype.createBox = function() {
-    
+
     this.container = $([
       '<div class="' + pluginName + '-incorrectwords">',
       '</div>'
@@ -242,11 +242,14 @@
 
   IncorrectWordsInline.prototype.removeWord = function(elem) {};
 
-  IncorrectWordsInline.prototype.destroy = function() {
+  IncorrectWordsInline.prototype.destroy = function(spellChecker) {
     this.element.off('.' + pluginName);
-    try {
-      findAndReplaceDOMText.revert();
-    } catch(e) {}
+
+    if (spellChecker.parser.incorrectWords && spellChecker.parser.incorrectWords.length) {
+      try {
+        spellChecker.parser.finder.revert();
+      } catch(e) {}
+    }
   };
 
   /* Suggest box
@@ -525,7 +528,7 @@
         .end()
         .text();
       }
-      
+
       return this.clean(text);
 
     }.bind(this));
@@ -572,9 +575,35 @@
     this.finder = findAndReplaceDOMText(element[0], {
       preset: 'prose',
       find: new RegExp(regExp, 'g'),
-      wrap: 'span',
-      wrapClass: pluginName + '-word-highlight',
+      replace: this.highlightWordsHandler(incorrectWords),
     });
+
+  };
+
+  HtmlParser.prototype.highlightWordsHandler = function(incorrectWords) {
+    var firstElement, currentWord;
+
+    return function(fill, i) {
+
+      // Replacement node
+      var span = $('<span />', {
+        'class': pluginName + '-word-highlight'
+      });
+
+      if (currentWord !== i.index) {
+        firstElement = span;
+        currentWord = i.index;
+      }
+
+      span
+      .text(fill.text)
+      .data({
+        word: i[0],
+        firstElement: firstElement,
+      });
+
+      return span[0];
+    };
   };
 
   HtmlParser.prototype.ignoreWord = function(oldWord, replacement) {
@@ -607,9 +636,9 @@
   };
 
   SpellChecker.prototype.setupSuggestBox = function() {
-    
+
     this.suggestBox = new SuggestBox(this.config, this.elements);
-    
+
     this.on('replace.word.before', function() {
       this.suggestBox.close();
       this.suggestBox.detach();
@@ -627,8 +656,8 @@
   SpellChecker.prototype.setupIncorrectWords = function() {
 
     this.incorrectWords = new Collection(this.elements, function(element) {
-      return this.config.parser === 'html' ? 
-        new IncorrectWordsInline(this.config, this.parser, element) : 
+      return this.config.parser === 'html' ?
+        new IncorrectWordsInline(this.config, this.parser, element) :
         new IncorrectWordsBox(this.config, this.parser, element);
     }.bind(this));
 
@@ -637,13 +666,13 @@
     }.bind(this));
 
     this.on('destroy', function() {
-      this.incorrectWords.destroy();
+      this.incorrectWords.destroy(this);
     }, this);
   };
 
   SpellChecker.prototype.setupParser = function() {
-    this.parser = this.config.parser === 'html' ? 
-      new HtmlParser(this.elements) : 
+    this.parser = this.config.parser === 'html' ?
+      new HtmlParser(this.elements) :
       new TextParser(this.elements);
   };
 
@@ -670,7 +699,7 @@
   };
 
   SpellChecker.prototype.replaceWord = function(oldWord, replacement, elementOrText) {
-    
+
     if (typeof elementOrText === 'string') {
       return this.parser.replaceWordInText(oldWord, replacement, elementOrText);
     }
@@ -690,7 +719,7 @@
   /* Event handlers */
 
   SpellChecker.prototype.onCheckWords = function(callback) {
-    
+
     return function(data) {
 
       var incorrectWords = data.data;
@@ -718,7 +747,7 @@
         words = $.grep(words, function(el, index){
           return index === $.inArray(el, words);
         });
-        this.incorrectWords.get(i).addWords(words); 
+        this.incorrectWords.get(i).addWords(words);
       }
     }.bind(this));
     this.suggestBox.reattach();

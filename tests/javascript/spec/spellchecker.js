@@ -155,7 +155,7 @@ describe("SpellChecker", function() {
   });
 
   describe('Suggest box', function() {
-    
+
     var spellchecker, a, parser;
 
     beforeEach(function () {
@@ -180,7 +180,7 @@ describe("SpellChecker", function() {
         'word1',
         'word2',
         'word3'
-      ]; 
+      ];
       spellchecker.suggestBox.addWords(words);
       var children = spellchecker.suggestBox.container.find('.words').children();
       expect(children.length).toBe(3);
@@ -313,49 +313,49 @@ describe("SpellChecker", function() {
 
       var tests = {
          // greek
-        'Γεια, αυτό είναι ένα-δοκιμή. Πώς είστε σήμερα;': 
+        'Γεια, αυτό είναι ένα-δοκιμή. Πώς είστε σήμερα;':
         'Γεια αυτό είναι ένα-δοκιμή Πώς είστε σήμερα',
          // russian
-        'Здравствуйте, это-тест. Как вы сегодня?': 
+        'Здравствуйте, это-тест. Как вы сегодня?':
         'Здравствуйте это-тест Как вы сегодня',
          // arabic
-        'مرحبا، وهذا هو الاختبار. كيف حالك اليوم؟': 
+        'مرحبا، وهذا هو الاختبار. كيف حالك اليوم؟':
         'مرحبا وهذا هو الاختبار كيف حالك اليوم',
          // hebrew
-        'הלו, זה מבחן. מה שלומך היום?': 
+        'הלו, זה מבחן. מה שלומך היום?':
         'הלו זה מבחן מה שלומך היום',
          // spanish
-        'Hola, esta es una prueba. ¿Cómo estás hoy?': 
+        'Hola, esta es una prueba. ¿Cómo estás hoy?':
         'Hola esta es una prueba Cómo estás hoy',
          // chinese (simplified)
-        '你好，这是一个测试。你今天怎么样呢？': 
+        '你好，这是一个测试。你今天怎么样呢？':
         '你好，这是一个测试。你今天怎么样呢',
          // french
-        'Bonjour, ceci est un test-. Comment allez-vous aujourd\'hui?': 
+        'Bonjour, ceci est un test-. Comment allez-vous aujourd\'hui?':
         'Bonjour ceci est un test Comment allez-vous aujourd\'hui',
          // random
-        'Aynı, labda - çalıştığım? \"quote\". Föö bär, we\'re @test to0 ÅÄÖ - 123 ok? kthxbai?': 
+        'Aynı, labda - çalıştığım? \"quote\". Föö bär, we\'re @test to0 ÅÄÖ - 123 ok? kthxbai?':
         'Aynı labda çalıştığım quote Föö bär we\'re test to0 ÅÄÖ ok kthxbai',
          // hindi
-        'नमस्कार, यह एक परीक्षण है. आज तुम कैसे हो?': 
+        'नमस्कार, यह एक परीक्षण है. आज तुम कैसे हो?':
         'नमस्कार यह एक परीक्षण है आज तुम कैसे हो',
          // hungarian
-        'Halló, ez egy-teszt. Hogy van ma?': 
+        'Halló, ez egy-teszt. Hogy van ma?':
         'Halló ez egy-teszt Hogy van ma',
          // japanese
-        'こんにちは、これは、テストです。元気ですか？': 
+        'こんにちは、これは、テストです。元気ですか？':
         'こんにちは、これは、テストです。元気ですか',
          // finnish
-        'Hei, tämä on-testi. Miten voit tänään?': 
+        'Hei, tämä on-testi. Miten voit tänään?':
         'Hei tämä on-testi Miten voit tänään',
          // italian
-        'Ciao, questo è un test. Come stai oggi?': 
+        'Ciao, questo è un test. Come stai oggi?':
         'Ciao questo è un test Come stai oggi',
          // korean
-        '안녕하세요 테스트입니다. 안녕하세요?': 
+        '안녕하세요 테스트입니다. 안녕하세요?':
         '안녕하세요 테스트입니다 안녕하세요',
          // portuguese
-        'Olá, este é um teste. Como você está hoje?': 
+        'Olá, este é um teste. Como você está hoje?':
         'Olá este é um teste Como você está hoje'
       };
 
@@ -375,7 +375,7 @@ describe("SpellChecker", function() {
       var replaced = parser.replaceWordInText('порядке', 'хорошо', text);
       expect(replaced).toBe('Привет, ты в хорошо? Хотели бы Вы немного кокса? Нет, спасибо, я в хорошо!');
     });
-  });  
+  });
 
   describe('Public methods', function() {
 
@@ -385,7 +385,7 @@ describe("SpellChecker", function() {
       spellchecker.destroy();
       expect(text).toBe('test there');
     });
-    
+
     it('Replaces a word in a DOM tree', function() {
       a = $('<a id="test1">he<span>llo</span></a>').appendTo('body');
       var spellchecker = newSpellChecker('html', a);
